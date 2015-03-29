@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="snap.svg-min.js"></script>
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	.container{width:800px;height:600px;margin:auto;border:1px solid black;}
+	#snap{width:800px;height:600px;}
+	</style>
+</head>
+<body>
+<div class="container">
+	<svg id="snap"></svg>
+</div>
+<script type="text/javascript">
+	var s = Snap("#snap");
+	var ear1 = s.ellipse(50,40,50,40);
+	ear1.attr({fill:"black"});
+	var ear2 = ear1.clone();
+	ear1.transform("t405,30r35");
+	ear2.transform("t265,56r-50");
+	var ears = s.g(ear1,ear2);
+
+	var headb = s.circle(80,80,80);
+	headb.attr({fill:"black"}).transform("t320,80");
+
+	var face1 = s.ellipse(30,50,30,50);
+	face1.transform("t50,200r8");
+	var face2 = face1.clone();
+	face2.transform("t100,200r-8");
+	var face3 = face1.clone();
+	face3.transform("t40,273r-60");
+	var face4 = face1.clone();
+	face4.transform("t110,273r60");
+	var face5 = face1.clone();
+	face5.transform("t75,240");
+	var face6 = s.ellipse(40,50,40,50);
+	face6.transform("t65,270");
+	var faceb = s.g(face1,face2,face3,face4,face5,face6);
+	var facef = faceb.clone();
+	facef.attr({fill:"#fae6c8"}).transform("t0,0.5s0.98,0.98");
+
+	var eye1b = s.ellipse(10,30,10,30);
+	var eye1f = eye1b.clone().attr({fill:"white"}).transform("s0.9,0.9");
+	var eye1i = s.ellipse(6,10,6,10).transform("t2,38");
+	var eye1 = s.g(eye1b,eye1f,eye1i);
+	var eye2 = eye1.clone();
+	eye1.transform("t82,220r-8");
+	eye2.transform("t112,220r5");
+	var eyes = s.g(eye1,eye2);
+
+	var noseC = s.ellipse(15,13,15,13);
+	noseC.transform("t93,285");
+	var line1 = s.path("M0,10C0,0,40,0,40,10C40,2,0,2,0,10Z");
+	var nose = s.g(noseC,line1);
+
+	line1.transform("t88,275");
+	var line2 = s.path("M0,5C0,0,20,0,20,5C20,2,0,2,0,5Z");
+	var line3 = line2.clone();
+	line2.transform("r-10");
+	line3.transform("t90,0r10");
+	var line4 = s.path("M10,2C10,40,100,40,100,2L100,1C100,39,10,39,10,1Z");
+	var line5 = s.path("M4,20C20,35,20,55,40,55C60,55,60,35,76,20C76,31,4,31,4,20Z");
+	line5.transform("t15,-1");
+	var tong = s.path("M12,35C15,35,15,50,35,53C55,50,55,35,55,38C55,35,35,35,35,40L38,50C39,42,18,28,12,35");
+	tong.attr({fill:"rgb(240,160,130)"});
+	tong.transform("t20,0");
+	var mouth = s.g(line2,line3,line4,line5,tong);
+	mouth.transform("t51,305");
+
+	var face = s.g(faceb,facef,eyes,nose,mouth);
+	face.transform("t298,-105r-10");
+
+</script>
+</body>
+</html>
